@@ -78,6 +78,24 @@ class CarInfo {
         $this->imageLink = $imageLink;
         $this->linkTemplate = $linkTemplate . '?store=' . self::STORE_CODE;
     }
+
+    public function toArray() {
+        return [
+            'Condition' => self::CONDITION,
+            'google_product_category' => self::GOOGLE_PRODUCT_CATEGORY,
+            'store_code' => self::STORE_CODE,
+            'vehicle_fulfillment(option:store_code)' => self::VEHICLE_FULLFILLMENT_OPTION_STORE_CODE,
+            'Brand' => $this->brand,
+            'Model' => $this->model,
+            'Year' => $this->year,
+            'Color' => $this->color,
+            'Mileage' => $this->mileage,
+            'Price' => $this->price,
+            'VIN' => $this->VIN,
+            'image_link' => $this->imageLink,
+            'link_template' => $this->linkTemplate
+        ];
+    }
 }
 
 
@@ -138,11 +156,10 @@ if ($expectedQuantityNum == count($allLinks))
 
     $imageLinkSelector = '.listing-detail-gallery .right-images div:nth-child(2) > a';
     $imageLink = $crawler->filter($imageLinkSelector);
-    if ($imageLink->text('') != '') {
-      $imageLink = $imageLink->attr('href');
-    }
-    else {
-      $imageLink = '';
+    if ($imageLink->count() > 0) {
+        $imageLink = $imageLink->attr('href');
+    } else {
+        $imageLink = '';
     }
     echo $imageLink;
 
@@ -150,6 +167,40 @@ if ($expectedQuantityNum == count($allLinks))
 
     $carInfos[] = $carInfo;
   }
+
+
+  // create CSV
+  $currentDateTime = date('Y-m-d_H-i');
+  $file = fopen('../data/carinfos__' . $currentDateTime . '.csv', 'w');
+  if ($file === false) {
+    die('Не удалось открыть файл');
+  }
+
+  $columnHeaders = [
+      'Condition',
+      'google_product_category',
+      'store_code',
+      'vehicle_fulfillment(option:store_code)',
+      'Brand',
+      'Model',
+      'Year',
+      'Color',
+      'Mileage',
+      'Price',
+      'VIN',
+      'image_link',
+      'link_template'
+  ];
+
+  fputcsv($file, $columnHeaders);
+
+  foreach ($carInfos as $carInfo) {
+    $carInfoArray = $carInfo->toArray();
+    fputcsv($file, $carInfoArray);
+  }
+  fclose($file);
+  echo 'CSV создан';
+  print_r($carInfos);
 }
 else
 {
