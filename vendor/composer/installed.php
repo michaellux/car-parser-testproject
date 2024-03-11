@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'michaellux/car-parser-testproject',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '61bd51b1c21117ef35544db47bfba4ca465cb7f7',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'michaellux/car-parser-testproject' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '61bd51b1c21117ef35544db47bfba4ca465cb7f7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
