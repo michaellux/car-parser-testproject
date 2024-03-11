@@ -1,11 +1,17 @@
 <?php
-namespace Michaellux\CarParserTestproject;
-require '../vendor/autoload.php';
-class CsvExporter {
-    private $file;
-    private $filePath;
 
-    public function __construct($filePath) {
+namespace Michaellux\CarParserTestproject;
+use Exception;
+
+require '../vendor/autoload.php';
+
+class CsvExporter
+{
+    private $file;
+    private string $filePath;
+
+    public function __construct($filePath)
+    {
         $this->filePath = $filePath;
         $this->file = fopen($filePath, 'w');
         if ($this->file === false) {
@@ -13,15 +19,18 @@ class CsvExporter {
         }
     }
 
-    public function writeHeaders($headers) {
+    public function writeHeaders($headers)
+    {
         fputcsv($this->file, $headers);
     }
 
-    public function writeRow($row) {
+    public function writeRow($row)
+    {
         fputcsv($this->file, $row);
     }
 
-    public function close() {
+    public function close()
+    {
         fclose($this->file);
     }
 }

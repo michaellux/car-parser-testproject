@@ -1,6 +1,8 @@
 <?php
+
 namespace Michaellux\CarParserTestproject;
-class CarInfo {
+class CarInfo
+{
     const CONDITION = 'Used';
     const GOOGLE_PRODUCT_CATEGORY = '123';
     const STORE_CODE = 'xpremium';
@@ -26,19 +28,21 @@ class CarInfo {
         string $VIN,
         string $imageLink,
         string $linkTemplate
-    ) {
+    )
+    {
         $this->brand = $brand;
         $this->model = $model;
         $this->year = $year;
         $this->color = $color;
         $this->mileage = $mileage;
-        $this->price = (int) str_replace(',', '', $price);
+        $this->price = (int)str_replace(',', '', $price);
         $this->VIN = $VIN;
         $this->imageLink = $imageLink;
         $this->linkTemplate = $linkTemplate . '?store=' . self::STORE_CODE;
     }
 
-    public function toArray() {
+    public function toArray(): array
+    {
         return [
             'Condition' => self::CONDITION,
             'google_product_category' => self::GOOGLE_PRODUCT_CATEGORY,
