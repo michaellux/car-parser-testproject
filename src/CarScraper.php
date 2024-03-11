@@ -63,7 +63,6 @@ class CarScraper
 
     public function parseCarDetails($link): CarInfo
     {
-        echo $link;
         $response = $this->client->request('GET', $link);
         $html = $response->getBody();
         $crawler = new Crawler($html);

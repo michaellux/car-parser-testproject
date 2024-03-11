@@ -28,9 +28,9 @@ if ($scraper->checkResultCount($allCarLinks)) {
     }
 
     $exporter->close();
-    echo 'CSV создан';
+    print_r('CSV создан');
 } else {
-    echo "Возможно получили не все карточки машин";
+    print_r("Возможно получили не все карточки машин");
 }
 
 
