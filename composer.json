@@ -16,5 +16,14 @@
         "guzzlehttp/guzzle": "^7.8",
         "symfony/dom-crawler": "^7.0",
         "symfony/css-selector": "^7.0"
+    },
+    "scripts": {
+        "clearCache": "rm -rf cache",
+        "startServer": "php -S localhost:8080",
+        "start": [
+            "@clearCache",
+            "@composer install",
+            "@startServer"
+        ]
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace Michaellux\CarParserTestproject;
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 use Symfony\Component\DomCrawler\Crawler;
 use GuzzleHttp\Client;
